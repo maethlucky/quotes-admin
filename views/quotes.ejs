@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include("partials/head.ejs")%>
+</head>
+<body>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <a href="/home" class="btn btn-outline-secondary m-1">Back</a>
+        <h1 class="text-center flex-grow-1 m-0">All Quotes</h1>
+        <div style="width:80px;"></div>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Quote</th>
+        </tr>
+        <% for (let quote of quotes) { %>
+            <tr>
+                <td><%=quote.quoteId%></td>
+                <td><%=quote.quote%></td>
+                <td><a href="/editQuote?quoteId=<%=quote.quoteId%>">Edit</a></td>
+                <td><a href="/deleteQuote?quoteId=<%=quote.quoteId%>">Delete</a></td>
+            </tr>
+        <% } %>
+    </table>
+    
+    <%-include("partials/footer.ejs")%>
+</body>
+</html>

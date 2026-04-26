@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include("partials/head.ejs")%>
+</head>
+<body>
+    <h1 class="text-center">Edit Quote</h1>
+
+    <div class="container">
+        <form action="/updateQuote" method="POST" class="w-50 mx-auto">
+            <input type="hidden" name="quoteId" value="<%=quote[0].quoteId%>">
+
+            <div class="row mb-2 align-items-center">
+                <div class="col-4 text-end">Quote:</div>
+                <div class="col-8">
+                    <textarea name="quote" id="quote" class="form-control"><%=quote[0].quote%></textarea>
+                </div>
+            </div>
+
+            <div class="row mb-2 align-items-center">
+                <div class="col-4 text-end">Author:</div>
+                <div class="col-8">
+                    <select name="authorId" class="form-select">
+                        <% for (let author of authors) { %>
+                            <option value="<%=author.authorId%>"
+                            <%=quote[0].authorId == author.authorId ? "selected" : ""%>
+                            ><%=author.name%></option>
+                        <% } %>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-2 align-items-center">
+                <div class="col-4 text-end">Category:</div>
+                <div class="col-8">
+                    <select name="category" class="form-select">
+                        <% for (let category of categories) { %>
+                            <option
+                            <%=quote[0].category == category.category ? "selected" : ""%>
+                            ><%=category.category%></option>
+                        <% } %>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-2 align-items-center">
+                <div class="col-4 text-end">Likes:</div>
+                <div class="col-8">
+                    <input type="number" name="likes" value="<%=quote[0].likes%>" class="form-control">
+                </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <button id="submitBtn" class="btn btn-secondary">Save Changes</button>
+            </div>
+
+            <div class="text-center mt-2">
+                <span id="error" style="display:none"></span>
+            </div>
+
+        </form>
+    </div>
+
+    <%-include("partials/footer.ejs")%>
+
+    <script>
+        document.querySelector("#submitBtn").addEventListener("click", validateQuote);
+
+        function validateQuote(e) {
+            let quote = document.querySelector("#quote").value.trim();
+
+            if (quote.length < 5) {
+                e.preventDefault();
+                let error = document.querySelector("#error");
+                error.textContent = "Quote must be at least 5 characters!"
+                error.style.color = "red";
+                error.style.display = "inline";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include("partials/head.ejs")%>
+</head>
+<body>
+    <h1 class="text-center">Admin Section</h1>
+
+    <div class="container d-flex justify-content-center gap-2">
+        <form action="/addAuthor">
+            <button class="btn btn-secondary border">Add Authors</button>
+        </form>
+
+        <form action="/addQuote">
+            <button class="btn btn-secondary border">Add Quotes</button>
+        </form>
+
+        <form action="/authors">
+            <button class="btn btn-secondary border">All Authors</button>
+        </form>
+
+        <form action="/quotes">
+            <button class="btn btn-secondary border">All Quotes</button>
+        </form>
+
+        <form action="/logout">
+            <button class="btn btn-secondary border">Log Out</button>
+        </form>
+    </div>
+
+    <%-include("partials/footer.ejs")%>
+</body>
+</html>

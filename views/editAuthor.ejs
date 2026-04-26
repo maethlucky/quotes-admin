@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%-include("partials/head.ejs")%>
+</head>
+
+<body>
+    <h1 class="text-center">Edit Author</h1>
+
+    <form action="/updateAuthor" method="POST" class="w-50 mx-auto">
+        <input type="hidden" name="authorId" value="<%=author[0].authorId%>">
+
+        <div class="row mb-1 align-items-center">
+            <div class="col-4 text-end">First Name:</div>
+            <div class="col-8">
+                <input type="text" name="firstName" value="<%=author[0].firstName%>" class="form-control">
+            </div>
+        </div>
+
+        <div class="row mb-2 align-items-center">
+            <div class="col-4 text-end">Last Name:</div>
+            <div class="col-8">
+                <input type="text" name="lastName" value="<%=author[0].lastName%>" class="form-control">
+            </div>
+        </div>
+
+        <div class="row mb-2 align-items-center">
+            <div class="col-4 text-end">Sex:</div>
+            <div class="col-8">
+                M <input type="radio" name="sex" value="M" <%=author[0].sex == "M" ? "checked" : ""%>>
+                F <input type="radio" name="sex" value="F" <%=author[0].sex == "F" ? "checked" : ""%>>
+            </div>
+        </div>
+
+        <div class="row mb-2 align-items-center">
+            <div class="col-4 text-end">Country:</div>
+            <div class="col-8">
+                <input type="text" name="country" value="<%=author[0].country%>" class="form-control">
+            </div>
+        </div>
+
+        <div class="row mb-2 align-items-center">
+            <div class="col-4 text-end">Profession:</div>
+            <div class="col-8">
+                <input type="text" name="profession" value="<%=author[0].profession%>" class="form-control">
+            </div>
+        </div>
+
+        <div class="row mb-2 align-items-center">
+            <div class="col-4 text-end">Date of Birth:</div>
+            <div class="col-8">
+                <input type="date" name="dob" value="<%=author[0].ISOdob%>" class="form-control">
+            </div>
+        </div>
+
+        <div class="row mb-2 align-items-center">
+            <div class="col-4 text-end">Date of Death:</div>
+            <div class="col-8">
+                <input type="date" name="dod" value="<%=author[0].ISOdod%>" class="form-control">
+            </div>
+        </div>
+
+        <div class="row mb-2 align-items-center">
+            <div class="col-4 text-end">Biography:</div>
+            <div class="col-8">
+                <textarea name="bio" class="form-control"><%=author[0].biography%></textarea>
+            </div>
+        </div>
+
+        <div class="row mb-2 align-items-center">
+            <div class="col-4 text-end">Portrait:</div>
+            <div class="col-8">
+                <textarea name="portrait" class="form-control"><%=author[0].portrait%></textarea>
+            </div>
+        </div>
+
+        <div class="text-center mt-3">
+            <button class="btn btn-secondary">Save Changes</button>
+        </div>
+
+    </form>
+
+    <%-include("partials/footer.ejs")%>
+</body>
+
+</html>
