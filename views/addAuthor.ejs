@@ -6,84 +6,75 @@
 </head>
 
 <body>
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <a href="/home" class="btn btn-outline-secondary m-1">Back</a>
-        <h1 class="text-center flex-grow-1 m-0">Add Author</h1>
-        <div style="width:80px;"></div>
+    <%-include("partials/nav.ejs")%>
+
+    <div class="position-relative text-center mb-3">
+        <h1 class="m-4">Add Author</h1>
     </div>
 
 
-        <form action="/addAuthor" method="POST" class="w-50 mx-auto">
+    <form action="/addAuthor" method="POST" class="w-50 mx-auto">
 
-            <div class="row mb-1 align-items-center">
-                <div class="col-4 text-end">First Name:</div>
-                <div class="col-8">
-                    <input type="text" name="firstName" class="form-control">
-                </div>
+        <div class="mb-3">
+            <label class="form-label text-muted small">First Name</label>
+            <input type="text" name="firstName" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label text-muted small">Last Name</label>
+            <input type="text" name="lastName" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label text-muted small d-block">Sex</label>
+            <div class="d-flex gap-3">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sex" value="M" id="sexM" checked>
+                <label class="form-check-label" for="sexM">Male</label>
             </div>
-
-            <div class="row mb-2 align-items-center">
-                <div class="col-4 text-end">Last Name:</div>
-                <div class="col-8">
-                    <input type="text" name="lastName" class="form-control">
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sex" value="F" id="sexF">
+                <label class="form-check-label" for="sexF">Female</label>
             </div>
-
-            <div class="row mb-2 align-items-center">
-                <div class="col-4 text-end">Sex:</div>
-                <div class="col-8">
-                    M <input type="radio" name="sex" value="M" checked>
-                    F <input type="radio" name="sex" value="F">
-                </div>
             </div>
+        </div>
 
-            <div class="row mb-2 align-items-center">
-                <div class="col-4 text-end">Country:</div>
-                <div class="col-8">
-                    <input type="text" name="country" class="form-control">
-                </div>
+        <div class="mb-3">
+            <label class="form-label text-muted small">Country</label>
+            <input type="text" name="country" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label text-muted small">Profession</label>
+            <input type="text" name="profession" class="form-control">
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+            <label class="form-label text-muted small">Date of Birth</label>
+            <input type="date" name="dob" class="form-control">
             </div>
-
-            <div class="row mb-2 align-items-center">
-                <div class="col-4 text-end">Profession:</div>
-                <div class="col-8">
-                    <input type="text" name="profession" class="form-control">
-                </div>
+            <div class="col">
+            <label class="form-label text-muted small">Date of Death</label>
+            <input type="date" name="dod" class="form-control">
             </div>
+        </div>
 
-            <div class="row mb-2 align-items-center">
-                <div class="col-4 text-end">Date of Birth:</div>
-                <div class="col-8">
-                    <input type="date" name="dob" class="form-control">
-                </div>
-            </div>
+        <div class="mb-3">
+            <label class="form-label text-muted small">Biography</label>
+            <textarea name="bio" class="form-control" rows="3"></textarea>
+        </div>
 
-            <div class="row mb-2 align-items-center">
-                <div class="col-4 text-end">Date of Death:</div>
-                <div class="col-8">
-                    <input type="date" name="dod" class="form-control">
-                </div>
-            </div>
+        <div class="mb-3">
+            <label class="form-label text-muted small">Portrait URL</label>
+            <textarea name="portrait" class="form-control" rows="2"></textarea>
+        </div>
 
-            <div class="row mb-2 align-items-center">
-                <div class="col-4 text-end">Biography:</div>
-                <div class="col-8">
-                    <textarea name="bio" class="form-control"></textarea>
-                </div>
-            </div>
+        <div class="text-center mt-4">
+            <button class="btn btn-light border px-4">Add Author</button>
+        </div>
 
-            <div class="row mb-2 align-items-center">
-                <div class="col-4 text-end">Portrait:</div>
-                <div class="col-8">
-                    <textarea name="portrait" class="form-control"></textarea>
-                </div>
-            </div>
-
-            <div class="text-center mt-3">
-                <button class="btn btn-secondary">Add Author</button>
-            </div>
-
-        </form>
+    </form>
 
 
     <%-include("partials/footer.ejs")%>

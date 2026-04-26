@@ -4,58 +4,52 @@
     <%-include("partials/head.ejs")%>
 </head>
 <body>
-    <h1 class="text-center">Edit Quote</h1>
+    <%-include("partials/nav.ejs")%>
+
+    <div class="position-relative text-center mb-3">
+        <h1 class="m-4">Edit Quote</h1>
+    </div>
 
     <div class="container">
         <form action="/updateQuote" method="POST" class="w-50 mx-auto">
             <input type="hidden" name="quoteId" value="<%=quote[0].quoteId%>">
 
-            <div class="row mb-2 align-items-center">
-                <div class="col-4 text-end">Quote:</div>
-                <div class="col-8">
-                    <textarea name="quote" id="quote" class="form-control"><%=quote[0].quote%></textarea>
-                </div>
+            <div class="mb-3">
+            <label class="form-label text-muted small">Quote</label>
+            <textarea name="quote" id="quote" class="form-control" rows="3"><%=quote[0].quote%></textarea>
             </div>
 
-            <div class="row mb-2 align-items-center">
-                <div class="col-4 text-end">Author:</div>
-                <div class="col-8">
-                    <select name="authorId" class="form-select">
-                        <% for (let author of authors) { %>
-                            <option value="<%=author.authorId%>"
-                            <%=quote[0].authorId == author.authorId ? "selected" : ""%>
-                            ><%=author.name%></option>
-                        <% } %>
-                    </select>
-                </div>
+            <div class="mb-3">
+            <label class="form-label text-muted small">Author</label>
+            <select name="authorId" class="form-select">
+                <% for (let author of authors) { %>
+                <option value="<%=author.authorId%>"
+                    <%=quote[0].authorId == author.authorId ? "selected" : ""%>
+                ><%=author.name%></option>
+                <% } %>
+            </select>
             </div>
 
-            <div class="row mb-2 align-items-center">
-                <div class="col-4 text-end">Category:</div>
-                <div class="col-8">
-                    <select name="category" class="form-select">
-                        <% for (let category of categories) { %>
-                            <option
-                            <%=quote[0].category == category.category ? "selected" : ""%>
-                            ><%=category.category%></option>
-                        <% } %>
-                    </select>
-                </div>
+            <div class="mb-3">
+            <label class="form-label text-muted small">Category</label>
+            <select name="category" class="form-select">
+                <% for (let category of categories) { %>
+                <option <%=quote[0].category == category.category ? "selected" : ""%>><%=category.category%></option>
+                <% } %>
+            </select>
             </div>
 
-            <div class="row mb-2 align-items-center">
-                <div class="col-4 text-end">Likes:</div>
-                <div class="col-8">
-                    <input type="number" name="likes" value="<%=quote[0].likes%>" class="form-control">
-                </div>
+            <div class="mb-3">
+            <label class="form-label text-muted small">Likes</label>
+            <input type="number" name="likes" value="<%=quote[0].likes%>" class="form-control">
             </div>
 
-            <div class="text-center mt-3">
-                <button id="submitBtn" class="btn btn-secondary">Save Changes</button>
+            <div class="text-center mt-4">
+            <button id="submitBtn" class="btn btn-light border px-4">Save Changes</button>
             </div>
 
             <div class="text-center mt-2">
-                <span id="error" style="display:none"></span>
+            <span id="error" style="display:none"></span>
             </div>
 
         </form>

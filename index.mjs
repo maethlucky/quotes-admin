@@ -91,7 +91,7 @@ app.post("/addAuthor", isUserAuthenticated, async (req, res) => {
 
     await pool.query(sql, sqlParams);
 
-    res.redirect("/");
+    res.redirect("/home");
 });
 
 app.get("/addQuote", isUserAuthenticated, async (req, res) => {
@@ -119,7 +119,7 @@ app.post("/addQuote", isUserAuthenticated, async (req, res) => {
 
     await pool.query(sql, sqlParams);
 
-    res.redirect("/");
+    res.redirect("/home");
 });
 
 app.get("/authors", isUserAuthenticated, async (req, res) => {

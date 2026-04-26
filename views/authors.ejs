@@ -4,25 +4,35 @@
     <%-include("partials/head.ejs")%>
 </head>
 <body>
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <a href="/home" class="btn btn-outline-secondary m-1">Back</a>
-        <h1 class="text-center flex-grow-1 m-0">All Authors</h1>
-        <div style="width:80px;"></div>
+    <%-include("partials/nav.ejs")%>
+
+    <div class="position-relative text-center mb-3">
+        <h1 class="m-4">All Authors</h1>
     </div>
 
-    <table class="table">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-        </tr>
-        <% for (let author of authors) { %>
+    <table class="table table-hover w-50 mx-auto">
+        <thead>
             <tr>
-                <td><%=author.authorId%></td>
-                <td><%=author.name%></td>
-                <td><a href="/editAuthor?authorId=<%=author.authorId%>">Edit</a></td>
-                <td><a href="/deleteAuthor?authorId=<%=author.authorId%>">Delete</a></td>
+            <th class="text-muted fw-normal small border-bottom">ID</th>
+            <th class="text-muted fw-normal small border-bottom">Name</th>
+            <th class="border-bottom"></th>
+            <th class="border-bottom"></th>
             </tr>
-        <% } %>
+        </thead>
+        <tbody>
+            <% for (let author of authors) { %>
+            <tr>
+                <td class="text-muted small align-middle"><%=author.authorId%></td>
+                <td class="align-middle"><%=author.name%></td>
+                <td class="align-middle text-end">
+                <a href="/editAuthor?authorId=<%=author.authorId%>" class="btn btn-light border btn-sm px-3">Edit</a>
+                </td>
+                <td class="align-middle">
+                <a href="/deleteAuthor?authorId=<%=author.authorId%>" class="btn btn-light btn-sm px-3 text-danger border border-danger-subtle">Delete</a>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
     </table>
     
     <%-include("partials/footer.ejs")%>
